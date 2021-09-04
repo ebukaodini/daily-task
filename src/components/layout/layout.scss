@@ -1,0 +1,98 @@
+@import "../../assets/style/light-theme";
+// @import "../../assets/style/dark-theme";
+@import "../../assets/style/palette";
+@import "../../assets/style/base";
+
+// mobile
+$width: 100vw;
+.container {
+  width: $width;
+  padding: 0vw 0vw;
+}
+
+header {
+  position: fixed;
+  height: 10vh;
+  background: $card-bg;
+  z-index: 999;
+}
+
+main {
+  position: fixed;
+  top: 10vh;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: $body-bg;
+
+  nav.side-nav {
+    display: none;
+  }
+
+  div.page {
+    height: 300vh;
+  }
+
+  // Scrollbar
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $grey-fg;
+  }
+}
+
+nav.bottom-nav {
+  position: fixed;
+  bottom: 0px;
+  height: 10vh;
+  background: $card-bg;
+  z-index: 999;
+}
+
+// tablet
+@media (min-width: 425px) {
+  $width: 90vw;
+  .container {
+    width: $width;
+    padding: 0vw 5vw;
+  }
+}
+
+// desktop
+@media (min-width: 768px) {
+  $width: 60vw;
+  .container {
+    width: 60vw;
+    padding: 0vw 20vw;
+  }
+
+  nav.bottom-nav {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    nav.side-nav {
+      display: block;
+      position: fixed;
+      width: 30%;
+    }
+    div.page {
+      width: 70%;
+      margin-left: 30%;
+      border-left: 1px solid $grey-bg;
+    }
+
+    // Scrollbar
+    /* width */
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+  }
+}
