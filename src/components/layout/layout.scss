@@ -1,5 +1,4 @@
-@import "../../assets/style/light-theme";
-// @import "../../assets/style/dark-theme";
+@import "../../assets/style/themify";
 @import "../../assets/style/palette";
 @import "../../assets/style/base";
 
@@ -13,35 +12,36 @@ $width: 100vw;
 header {
   position: fixed;
   height: 10vh;
-  background: $card-bg;
   z-index: 999;
+  @include themify() {
+    background-color: themed('body-bg');
+  };
 }
 
 main {
   position: fixed;
   top: 10vh;
-  height: 90vh;
+  height: 80vh;
+  @include themify() {
+    background-color: themed('body-bg');
+  };
+
+  // handle overflow
   overflow-x: hidden;
   overflow-y: scroll;
-  background: $body-bg;
 
-  nav.side-nav {
-    display: none;
-  }
-
-  div.page {
-    height: 300vh;
-  }
-
-  // Scrollbar
-  /* width */
+  // scrollbar width
   &::-webkit-scrollbar {
     width: 5px;
   }
-
-  /* Handle */
+  // scrollbar handle
   &::-webkit-scrollbar-thumb {
-    background: $grey-fg;
+    background: grey // $grey-fg;
+  }
+
+  // hide the side-nav on mobile
+  nav.side-nav {
+    display: none;
   }
 }
 
@@ -49,7 +49,7 @@ nav.bottom-nav {
   position: fixed;
   bottom: 0px;
   height: 10vh;
-  background: $card-bg;
+  background: lightblue; // $card-bg;
   z-index: 999;
 }
 
@@ -70,27 +70,33 @@ nav.bottom-nav {
     padding: 0vw 20vw;
   }
 
+  // hide bottom nav on desktop
   nav.bottom-nav {
     display: none;
   }
 
   main {
+    height: 90vh;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    
+    // show the side-nav on desktop
     nav.side-nav {
       display: block;
       position: fixed;
       width: 30%;
     }
+    
     div.page {
       width: 70%;
       margin-left: 30%;
-      border-left: 1px solid $grey-bg;
+      height: max-content;
+      min-height: 100%;
+      border-left: 1px solid grey; // $grey-bg;
     }
 
-    // Scrollbar
-    /* width */
+    // increase scrollbar width on desktop
     &::-webkit-scrollbar {
       width: 10px;
     }
