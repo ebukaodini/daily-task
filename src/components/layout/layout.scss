@@ -14,8 +14,9 @@ header {
   height: 10vh;
   z-index: 999;
   @include themify() {
-    background-color: themed('body-bg');
-  };
+    background-color: themed("card-bg");
+    box-shadow: 0px 0px 3px 1px themed("grey-fg");
+  }
 }
 
 main {
@@ -23,20 +24,26 @@ main {
   top: 10vh;
   height: 80vh;
   @include themify() {
-    background-color: themed('body-bg');
-  };
+    background-color: themed("body-bg");
+  }
 
   // handle overflow
   overflow-x: hidden;
   overflow-y: scroll;
 
-  // scrollbar width
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  // scrollbar handle
-  &::-webkit-scrollbar-thumb {
-    background: grey // $grey-fg;
+  @include themify() {
+    // scrollbar width
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    // scrollbar handle
+    &::-webkit-scrollbar-thumb {
+      background-color: themed("grey-bg");
+      &:hover {
+        background-color: themed("grey-fg");
+        cursor: pointer;
+      }
+    }
   }
 
   // hide the side-nav on mobile
@@ -49,8 +56,11 @@ nav.bottom-nav {
   position: fixed;
   bottom: 0px;
   height: 10vh;
-  background: lightblue; // $card-bg;
   z-index: 999;
+  @include themify() {
+    background: themed("card-bg");
+    box-shadow: 0px 0px 3px 1px themed("grey-fg");
+  }
 }
 
 // tablet
@@ -80,25 +90,29 @@ nav.bottom-nav {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    
+
     // show the side-nav on desktop
     nav.side-nav {
       display: block;
       position: fixed;
       width: 30%;
     }
-    
+
     div.page {
       width: 70%;
       margin-left: 30%;
       height: max-content;
       min-height: 100%;
-      border-left: 1px solid grey; // $grey-bg;
+      @include themify() {
+        border-left: 1px solid themed("grey-fg");
+      }
     }
 
     // increase scrollbar width on desktop
-    &::-webkit-scrollbar {
-      width: 10px;
+    @include themify() {
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
     }
   }
 }
