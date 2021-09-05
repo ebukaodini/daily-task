@@ -12,7 +12,7 @@ export default function Header() {
   useEffect(() => {
     setInterval(() => {
       setDate(`${formatDate()}`);
-    }, 30000);
+    }, 10000);
   }, [setDate]);
 
   return (

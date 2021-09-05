@@ -94,15 +94,18 @@ nav.bottom-nav {
     // show the side-nav on desktop
     nav.side-nav {
       display: block;
-      position: fixed;
+      position: sticky;
+      top: 0px;
       width: 30%;
+      height: 100%;
     }
 
+    $padding: 15px;
     div.page {
+      padding-top: $padding;
       width: 70%;
-      margin-left: 30%;
-      height: max-content;
-      min-height: 100%;
+      height: calc(max-content - #{$padding});
+      min-height: calc(100% - #{$padding});
       @include themify() {
         border-left: 1px solid themed("grey-fg");
       }
