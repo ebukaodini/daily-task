@@ -1,6 +1,10 @@
 import { Loader } from "react-feather";
 import './loading-tasks.scss';
 
+/**
+ * a component to render a loading event
+ * @returns 
+ */
 export default function LoadingTasks() {
 
   return (

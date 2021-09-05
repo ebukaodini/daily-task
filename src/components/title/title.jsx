@@ -5,7 +5,7 @@ import './title.scss';
 /**
  * component to render page title
  * @param {String} title the page title
- * @param {bool} shouldPop enable back button
+ * @param {Boolean} shouldPop enable back button
  * @returns 
  */
 export default function Title({ title, shouldPop }) {
