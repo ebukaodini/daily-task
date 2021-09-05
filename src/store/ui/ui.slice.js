@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useLocation } from 'react-router'
 import { uiActions } from './ui.actions'
 
 export const uiSlice = createSlice({
   name: 'ui',
-  initialState: 'light-theme',
+  initialState: {
+    theme: 'light-theme',
+    page: 'tasks'
+  },
   reducers: uiActions
 })
 
-// Action creators are generated for each case reducer function
-export const { toggleTheme } = uiSlice.actions
+export const { toggleTheme, setPage } = uiSlice.actions
 
 export default uiSlice.reducer
