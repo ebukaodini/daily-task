@@ -1,0 +1,26 @@
+@import "../../assets/style/base";
+@import "../../assets/style/themify";
+
+.__loading_tasks {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+  height: 100px;
+  
+  @include themify() {
+    color: themed("grey-fg");
+  }
+
+  .__loading_icon {
+    animation: spinner infinite 1.5s linear;
+  }
+  
+  .__loading_text {
+    padding-left: 5px;
+  }
+}
+
+
