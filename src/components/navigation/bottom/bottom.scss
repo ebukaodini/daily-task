@@ -1,0 +1,60 @@
+@import "../../../assets/style/base";
+@import "../../../assets/style/themify";
+@import "../../../assets/style/palette";
+
+.bottom_nav {
+  height: 100%;
+  padding: 0px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  a.__nav_item {
+
+    height: 100%;
+    width: 100px;
+    text-decoration: none;
+
+    @include themify() {
+      color: themed('grey-fg');
+      &.active {
+        // color: themed('main-fg');
+        color: $primary;
+      
+        .__active_indicator {
+          background-color: $primary;
+        }
+      }
+    }
+
+    $indicator-height: 6px;
+    .__active_indicator {
+      visibility: hidden;
+      height: $indicator-height;
+      width: 100%;
+    }
+
+    &.active > .__active_indicator {
+      visibility: visible;
+    }
+
+    .__item {
+      height: calc(100% - #{$indicator-height});
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      svg.__item_icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 3px;
+      }
+
+      .__item_title {
+        font-weight: bold;
+      }
+    }
+  }
+}

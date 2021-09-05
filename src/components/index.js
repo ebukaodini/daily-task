@@ -1,5 +1,3 @@
-import Header from "./header/header";
-import SideNavigation from "./navigation/side/side";
-import BottomNavigation from "./navigation/bottom/bottom";
+import Layout from "./layout/layout";
 
-export { Header, SideNavigation, BottomNavigation }
+export { Layout }
