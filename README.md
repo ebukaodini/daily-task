@@ -1,11 +1,16 @@
 # daily-task
 A basic todo application that follows the kanban style of task management.
 
-How to link the Redux to the Database:
-+ Build the redux reducer to handle global state of different features
-+ Let the reducer actions handle the database operations and update state when successful.
-  i.e Acting like the controller in an MVC architecture
+![alt Task Page](./design-screens/Backlog-Task-Archive-Page.png)
 
-How to connect the the database to the redux:
-+ We are using PouchDb
-+ Instances of the database is opened and closed with every redux action.
+## Contribute
+If you are interested in joining in
+
+Clone the repository
+```bash
+git clone https://github.com/ebukaodini/daily-task.git 
+```
+
+Check out the tasks left on the [Trello board](https://trello.com/b/7AbEQvnQ/daily-task)
+
+You'd find the local design screens [here](./design-screens/) and the figma designs [here](https://www.figma.com/file/MyWby1hv42rV3lXMWYK1wS)
