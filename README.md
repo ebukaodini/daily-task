@@ -1,6 +1,8 @@
 # daily-task
 A basic todo application that follows the kanban style of task management.
 
+#javascript #react #redux #react-hooks #pouchdb #pwa
+
 ![alt Task Page](./design-screens/Backlog-Task-Archive-Page.png)
 
 ## Contribute
