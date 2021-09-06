@@ -32,12 +32,13 @@
           color: themed("main-fg");
           width: 40px;
           height: 40px;
+          border-radius: 50%;
+          transition: $become;
         }
         &:active,
-        &:hover {
+        &:hover, &:focus-visible {
           background-color: themed("grey-bg");
-          border-radius: 50%;
-          color: themed("main-fg");
+          outline: unset;
         }
       }
     }

@@ -29,6 +29,7 @@ div.__empty_space {
     font-size: large;
 
     background-color: transparent;
+    transition: $become;
 
     @include themify() {
       color: themed("grey-fg");

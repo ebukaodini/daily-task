@@ -19,7 +19,6 @@
     @include themify() {
       color: themed('grey-fg');
       &.active {
-        // color: themed('main-fg');
         color: $primary;
       
         .__active_indicator {
@@ -53,7 +52,7 @@
       }
 
       .__item_title {
-        font-weight: bold;
+        font-weight: 500;
       }
     }
   }

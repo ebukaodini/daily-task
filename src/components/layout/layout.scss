@@ -27,6 +27,14 @@ main {
     background-color: themed("body-bg");
   }
 
+  $vpadding: 15px;
+  $hpadding: 15px;
+  div.page {
+    padding: $vpadding $hpadding;
+    height: max-content;
+    min-height: calc(100% - calc(#{$vpadding} * 2));
+  }
+
   // handle overflow
   overflow-x: hidden;
   overflow-y: scroll;
@@ -104,8 +112,8 @@ nav.bottom-nav {
     div.page {
       padding-top: $padding;
       width: 70%;
-      height: calc(max-content - #{$padding});
-      min-height: calc(100% - #{$padding});
+      height: max-content;
+      min-height: calc(100% - calc(#{$padding} * 2));
       @include themify() {
         border-left: 1px solid themed("grey-fg");
       }

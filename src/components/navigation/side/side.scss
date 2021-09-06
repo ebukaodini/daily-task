@@ -14,11 +14,11 @@
     width: 100%;
     margin-bottom: 20px;
     text-decoration: none;
+    transition: $become;
 
     @include themify() {
       color: themed("grey-fg");
       &.active {
-        // color: themed('main-fg');
         color: $primary;
 
         .__active_indicator {
@@ -47,7 +47,7 @@
       }
 
       .__item_title {
-        font-weight: bold;
+        font-weight: 500;
       }
     }
 

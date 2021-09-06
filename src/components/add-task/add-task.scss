@@ -1,0 +1,40 @@
+@import "../../assets/style/base";
+@import "../../assets/style/themify";
+
+div.__add_task_btn {
+  width: 100%;
+
+  button.__btn {
+    width: 100%;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    font-size: large;
+
+    background-color: transparent;
+
+    @include themify() {
+      color: themed("grey-fg");
+      &:hover,
+      &:active {
+        background-color: themed("grey-bg");
+      }
+    }
+
+    span {
+      margin-left: 2px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: initial;
+    button.__btn {
+      width: initial;
+    }
+  }
+
+}
