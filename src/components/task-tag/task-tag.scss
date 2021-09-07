@@ -5,6 +5,8 @@ div.__task_tag {
   width: 25px;
   height: 10px;
   border-radius: $box-radius;
+  font-weight: bold;
+  margin-right: 5px;
 
   @include tagColor();
   color: #ffffff;
@@ -15,19 +17,19 @@ div.__task_tag {
 
   span.__tag_description {
     visibility: hidden;
-    width: auto;
+    width: max-content;
     padding: 4px 6px;
     font-size: 12px;
     text-align: center;
     border-radius: $box-radius;
-
+    
     @include themify() {
       background-color: themed("grey-bg");
       color: themed("main-fg");
     }
 
     position: absolute;
-    bottom: 125%;
+    bottom: 150%;
     left: 0%;
     translate: center;
     opacity: 0;
