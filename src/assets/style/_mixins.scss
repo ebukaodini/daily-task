@@ -1,0 +1,36 @@
+@import 'themes';
+
+@mixin themify($themes: $themes, $transition: 'transition') {
+  @each $theme, $map in $themes {
+
+    // &.#{$theme}-theme, 
+    // this means the theme class is in the same line as element being styled which rarely happens. Instead make sure to keep the theme class atleast one level before the element class
+    .#{$theme}-theme & {
+      
+      $theme-map: () !global;
+      transition: background-color 4s, color 3s ease; // magical moments shii 🤯
+
+      
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin tagColor($tags: $tags) {
+  @each $color, $code in $tags {
+    &.__#{$color} {
+      background-color: #{$code};
+    }
+  }
+}
