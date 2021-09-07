@@ -23,7 +23,7 @@ export default function Layout(props) {
   }, [dispatchPage, setDispatchPage, location, dispatch])
 
   return (
-    <div className={`${ui.theme}`}>
+    <div className={`__layout ${ui.theme}`}>
 
       <header className='container'>
         <Header />

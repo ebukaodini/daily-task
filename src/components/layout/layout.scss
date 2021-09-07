@@ -1,6 +1,10 @@
-@import "../../assets/style/themify";
+@import "../../assets/style/mixins";
 @import "../../assets/style/palette";
 @import "../../assets/style/base";
+
+div.__layout {
+  transition: background-color 4s, color 4s ease; // magical moments shii 🤯
+}
 
 // mobile
 $width: 100vw;
