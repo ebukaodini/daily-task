@@ -8,7 +8,7 @@
     .#{$theme}-theme & {
       
       $theme-map: () !global;
-      transition: background-color 4s, color 3s ease; // magical moments shii 🤯
+      transition: background-color 1s, color 1s ease; // magical moments shii 🤯
 
       
       @each $key, $submap in $map {
