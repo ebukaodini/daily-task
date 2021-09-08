@@ -2,10 +2,6 @@
 @import "../../assets/style/palette";
 @import "../../assets/style/base";
 
-div.__layout {
-  transition: background-color 4s, color 4s ease; // magical moments shii 🤯
-}
-
 // mobile
 $width: 100vw;
 .container {
@@ -19,7 +15,7 @@ header {
   z-index: 999;
   @include themify() {
     background-color: themed("card-bg");
-    box-shadow: $box-shadow themed("grey-fg");
+    box-shadow: $box-shadow themed("grey-bg");
   }
 }
 

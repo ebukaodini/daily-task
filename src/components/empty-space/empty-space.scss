@@ -22,7 +22,7 @@ div.__empty_space {
   .__add_btn {
     border: none;
     padding: 8px 16px;
-    border-radius: 5px;
+    border-radius: $box-radius;
     cursor: pointer;
 
     display: flex;

@@ -3,6 +3,7 @@
 
 div.__add_task_btn {
   width: 100%;
+  margin-bottom: 15px;
 
   button.__btn {
     width: 100%;
@@ -16,7 +17,8 @@ div.__add_task_btn {
     font-size: large;
 
     background-color: transparent;
-
+    transition: $become;
+    
     @include themify() {
       color: themed("grey-fg");
       &:hover,

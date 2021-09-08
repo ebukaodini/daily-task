@@ -1,0 +1,55 @@
+@import "../../assets/style/base";
+@import "../../assets/style/mixins";
+
+div.__task {
+  border-radius: $box-radius;
+  padding: 20px 20px;
+  margin-bottom: 15px;
+
+  @include themify() {
+    box-shadow: $box-shadow themed("grey-bg");
+    background-color: themed("card-bg");
+  }
+
+  div.__task_tags {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    button.__manage_tags_btn {
+      border: none;
+      background-color: transparent;
+      height: 12px;
+      padding: 2px 6px;
+      margin: 3px 0px;
+      cursor: pointer;
+      border-radius: $box-radius;
+      transition: $become;
+      overflow-y: hidden;
+
+      display: flex;
+      align-items: center;
+
+      @include themify() {
+        color: themed('main-fg');
+        &:hover {
+          background-color: themed('grey-bg');
+        }
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  div.__task_description {
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  div.__task {
+    width: 400px;
+  }
+}

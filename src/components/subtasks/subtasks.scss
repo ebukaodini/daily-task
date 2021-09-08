@@ -1,0 +1,98 @@
+@import "../../assets/style/base";
+@import "../../assets/style/mixins";
+
+button.__task_subtask_btn {
+  border: none;
+  cursor: pointer;
+  border-radius: $box-radius;
+  // margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 14px;
+  font-weight: bold;
+
+  background-color: transparent;
+  transition: $become;
+
+  @include themify() {
+    color: themed("main-fg");
+    &:hover,
+    &.__open {
+      background-color: themed("grey-bg");
+    }
+  }
+
+  &.__empty span {
+    margin-left: 5px;
+  }
+
+  &.__filled span {
+    margin-right: 5px;
+  }
+}
+
+div.__subtask_list {
+  margin-top: 15px;
+  @include themify() {
+    color: themed("main-fg");
+  }
+
+  div.__subtask_item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+
+    button.__item_status {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      transition: $become;
+      padding: 0px;
+      height: 18px;
+
+      @include themify() {
+        color: themed("main-fg");
+      }
+    }
+
+    div.__item_content {
+      cursor: text;
+      font-size: 16px;
+      margin-left: 10px;
+      width: 100%;
+      
+      &.__completed {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  button.__add_subtask_btn {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: $box-radius;
+
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 14px;
+    font-weight: bold;
+
+    background-color: transparent;
+    transition: $become;
+
+    @include themify() {
+      color: themed("main-fg");
+      &:hover {
+        background-color: themed("grey-bg");
+      }
+    }
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}

@@ -54,6 +54,7 @@
     $indicator-width: 6px;
     &.active > .__active_indicator {
       visibility: visible;
+      transition: $become;
     }
 
     .__active_indicator {

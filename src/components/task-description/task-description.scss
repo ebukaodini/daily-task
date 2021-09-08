@@ -1,0 +1,15 @@
+@import '../../assets/style/base';
+@import '../../assets/style/mixins';
+
+div.__description_content {
+  @include themify() {
+    color: themed('main-fg');
+  }
+
+  font-size: 18px;
+  cursor: pointer;
+
+  &.__editing {
+    cursor: text;
+  }
+}
