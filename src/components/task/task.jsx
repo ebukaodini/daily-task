@@ -1,6 +1,7 @@
 import { MoreHorizontal } from "react-feather";
 import SubTasks from "../subtasks/subtasks";
 import TaskDescription from "../task-description/task-description";
+import TaskMenu from "../task-menu/task-menu";
 import TaskTag from "../task-tag/task-tag";
 import './task.scss';
 
@@ -23,11 +24,17 @@ export default function Task() {
       </div>
 
       <div className='__task_description'>
-        <TaskDescription description='The JBOD circuit is down, generate the auxillary application so we can calculate the JBOD interface!'/>
+        <TaskDescription description='The JBOD circuit is down, generate the auxillary application so we can calculate the JBOD interface!' />
       </div>
 
+      {/* <div className='__task_action_btns'>
+        <button>Subtasks</button>
+        <button>Status</button>
+      </div> */}
+
       <div className='__task_actions'>
-        <SubTasks subtasksList={[{item:'Use the neural RAM matrix, then you can parse the open-source array!',completed: true}, {item:'Try to program the AI panel, maybe it will back up the haptic capacitor!',completed: false}]} />
+        <SubTasks subtasksList={[{ item: 'Use the neural RAM matrix, then you can parse the open-source array!', completed: true }, { item: 'Try to program the AI panel, maybe it will back up the haptic capacitor!', completed: false }]} />
+        <TaskMenu status='Doing' />
       </div>
 
     </div>

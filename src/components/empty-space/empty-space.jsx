@@ -15,7 +15,7 @@ export default function EmptySpace({ item, canAdd, btnTitle, addHandler }) {
   addHandler = canAdd && addHandler ? addHandler : () => { alert('No Handler') }
 
   return (
-    <div class='__empty_space'>
+    <div className='__empty_space'>
 
       <Inbox className='__space_icon' size={100} strokeWidth={1} />
 

@@ -8,6 +8,8 @@ div.__description_content {
 
   font-size: 18px;
   cursor: pointer;
+  width: 100%;
+  min-height: 20px;
 
   &.__editing {
     cursor: text;

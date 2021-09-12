@@ -32,9 +32,9 @@ div.__task {
       align-items: center;
 
       @include themify() {
-        color: themed('main-fg');
+        color: themed("main-fg");
         &:hover {
-          background-color: themed('grey-bg');
+          background-color: themed("grey-bg");
         }
         &:focus-visible {
           outline: none;
@@ -46,6 +46,13 @@ div.__task {
   div.__task_description {
     margin-bottom: 15px;
   }
+
+  // div.__task_action_btns {
+  // div.__task_actions {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  // }
 }
 
 @media (min-width: 768px) {

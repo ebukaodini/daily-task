@@ -1,0 +1,135 @@
+@import "../../assets/style/base";
+@import "../../assets/style/palette";
+@import "../../assets/style/mixins";
+
+button.__task_menu_btn {
+  
+
+  height: 34px;
+  overflow-y: hidden;
+
+  span {
+    margin-right: 5px;
+  }
+}
+
+.light-theme .__doing {
+  animation: animateDoingLightTheme infinite 6s ease;
+}
+
+.dark-theme .__doing {
+  animation: animateDoingDarkTheme infinite 6s ease;
+}
+
+@keyframes animateDoingLightTheme {
+  0% {
+    color: #002433;
+  }
+  25% {
+    color: #99e0ff;
+  }
+  50% {
+    color: #002433;
+  }
+  75% {
+    color: #99e0ff;
+  }
+  100% {
+    color: #002433;
+  }
+}
+
+@keyframes animateDoingDarkTheme {
+  0% {
+    color: #f5fcff;
+  }
+  25% {
+    color: #00b6ff;
+  }
+  50% {
+    color: #f5fcff;
+  }
+  75% {
+    color: #00b6ff;
+  }
+  100% {
+    color: #f5fcff;
+  }
+}
+
+button.__task_menu_btn,
+button.__menu_status_btn,
+button.__menu_action_btn {
+  border: none;
+  cursor: pointer;
+  border-radius: $box-radius;
+
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 14px;
+  font-weight: 500;
+  margin-right: 5px;
+
+  background-color: transparent;
+  transition: $become;
+
+  @include themify() {
+    color: themed("main-fg");
+    &:hover,
+    &.__active,
+    &.__open {
+      background-color: themed("grey-bg");
+    }
+    &:disabled {
+      color: themed("grey-fg");
+    }
+  }
+}
+
+div.__task_menu_list {
+  margin-top: 15px;
+
+  hr {
+    margin: 15px 0px;
+    @include themify() {
+      border: 2px solid themed("grey-bg");
+      color: themed("grey-bg");
+    }
+  }
+}
+
+button.__menu_status_btn {
+  width: 100%;
+  margin-bottom: 10px;
+
+  span {
+    margin-left: 5px;
+  }
+  @include themify() {
+    border: 2px solid themed("grey-bg");
+  }
+}
+
+button.__menu_action_btn {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  @include themify() {
+    background-color: themed("grey-bg");
+  }
+
+  span {
+    margin-left: 5px;
+  }
+
+  &.__delete {
+    background-color: $error-bg;
+    color: $error-fg;
+    &:active,
+    &:hover {
+      background-color: $error-bg;
+      color: $error-fg;
+    }
+  }
+}

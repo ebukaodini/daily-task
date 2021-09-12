@@ -1,17 +1,23 @@
 @import "../../assets/style/base";
 @import "../../assets/style/mixins";
 
+// div.__task_subtask {
+//   // position: relative;
+// }
+
 button.__task_subtask_btn {
+  // float: left;
+  // clear: right;
+
   border: none;
   cursor: pointer;
   border-radius: $box-radius;
-  // margin-bottom: 15px;
-
+  
   display: flex;
   align-items: center;
   font-size: 14px;
   padding: 10px 14px;
-  font-weight: bold;
+  font-weight: 500;
 
   background-color: transparent;
   transition: $become;
@@ -34,6 +40,9 @@ button.__task_subtask_btn {
 }
 
 div.__subtask_list {
+  // position: absolute;
+  // top: 100%;
+
   margin-top: 15px;
   @include themify() {
     color: themed("main-fg");
@@ -51,7 +60,7 @@ div.__subtask_list {
       transition: $become;
       padding: 0px;
       height: 18px;
-
+      
       @include themify() {
         color: themed("main-fg");
       }
@@ -73,13 +82,13 @@ div.__subtask_list {
     border: none;
     cursor: pointer;
     width: 100%;
+    font-weight: 500;
     border-radius: $box-radius;
 
     display: flex;
     align-items: center;
     font-size: 14px;
     padding: 10px 14px;
-    font-weight: bold;
 
     background-color: transparent;
     transition: $become;

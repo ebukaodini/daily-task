@@ -40,7 +40,7 @@ export default function SubTasks({ subtasksList }) {
   }
 
   return (
-    <div>
+    <div className='__task_subtask'>
       <button className={`__task_subtask_btn ${subtasks.length > 0 ? '__filled' : '__empty'} ${open && '__open'}`} onClick={() => setMode(!open)}>
         {
           subtasks.length === 0 ?
@@ -51,7 +51,7 @@ export default function SubTasks({ subtasksList }) {
             :
             <>
               <span>
-                {subtasks.length} Subtasks
+                {subtasks.length} {subtasks.length > 1 ? 'Subtasks' : 'Subtask'}
               </span>
               {open ?
                 <ChevronUp size={16} />
@@ -77,19 +77,18 @@ export default function SubTasks({ subtasksList }) {
                         <Square size={18} />
                     }
                   </button>
-                  <div className={`__item_content ${task.completed && '__completed'}`} contentEditable={true} onBlur={updateSubtask} onKeyDown={(e) => captureKey(e, index)}>{task.item}</div>
+                  <div className={`__item_content ${task.completed && '__completed'}`} suppressContentEditableWarning contentEditable={true} onBlur={updateSubtask} onKeyDown={(e) => captureKey(e, index)}>{task.item}</div>
                 </div>
               ))
               :
               <></>
           }
           <button className='__add_subtask_btn' onClick={newSubtask}>
-            <Plus size={18} />
+            <Plus size={16} />
             <span>Add subtask</span>
           </button>
         </div>
       }
-
     </div>
   )
 }
