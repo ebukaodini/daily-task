@@ -6,8 +6,8 @@ export default function TasksPage() {
     <Layout>
       <section>
         <Title title='Tasks' />
-        {/* <LoadingTasks />
-        <EmptySpace canAdd item='task' btnTitle='Add a task' /> */}
+        <LoadingTasks />
+        <EmptySpace canAdd item='task' btnTitle='Add a task' />
         <div className='__tasks'>
           <Task />
           <Task />
