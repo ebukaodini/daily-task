@@ -6,7 +6,7 @@ export default function BacklogPage() {
       <section>
       <Title title='Backlog' />
         <EmptySpace item='task' canAdd btnTitle='Add a task' />
-        <AddTask />
+        {/* <AddTask /> */}
       </section>
     </Layout>
   )

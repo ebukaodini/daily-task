@@ -1,0 +1,47 @@
+@import "../../assets/style/mixins";
+@import "../../assets/style/base";
+
+div.__welcome {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include themify() {
+    background-color: themed("body-bg");
+    color: themed("main-fg");
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  a.__continue_link {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    font-size: large;
+
+    background-color: transparent;
+    transition: $become;
+    
+    &:focus-visible {
+      outline: none;
+    }
+
+    @include themify() {
+      color: themed("main-fg");
+
+      &:hover,
+      &:active {
+        background-color: themed("grey-bg");
+      }
+    }
+  }
+}

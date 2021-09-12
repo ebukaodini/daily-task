@@ -1,11 +1,16 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './style.scss';
+import './WelcomePage.scss';
 
 export default function WelcomePage() {
+  const ui = useSelector(state => state.ui);
+
   return (
-    <div className='welcomepage'>
-      <div>Daily Tasks</div>
-      <Link to='/tasks' className=''>Continue</Link>
-    </div>
+    <section className={`${ui.theme}`}>
+      <div className='__welcome'>
+        <h1 className='hand-written'>Daily Tasks</h1>
+        <Link className='__continue_link' to='/tasks' >Continue</Link>
+      </div>
+    </section>
   )
 }
