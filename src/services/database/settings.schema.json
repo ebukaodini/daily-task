@@ -1,0 +1,79 @@
+{
+  "name": "Settings Schema",
+  "description": "describes the settings",
+  "version": 0,
+  "primaryKey": "id",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "minimum": 1
+    },
+    "darkMode": {
+      "type": "boolean"
+    },
+    "automateBoardReset": {
+      "type": "boolean"
+    },
+    "boardResetTime": {
+      "type": "string"
+    },
+    "resetActions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "Pending",
+              "Doing",
+              "Paused",
+              "Cancelled",
+              "Done"
+            ]
+          },
+          "board": {
+            "enum": [
+              "Tasks",
+              "Archive",
+              "Backlog"
+            ]
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "colorCode": {
+            "enum": [
+              "7CC979",
+              "FFB05A",
+              "EF5849",
+              "C479DD",
+              "F5FCFF",
+              "AF7C2F",
+              "00C3DE",
+              "FF94D3",
+              "324662",
+              "B3BAC4",
+              "43E79C",
+              "F5D434"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "maximumTaskDoing": {
+      "type": "number"
+    }
+  }
+}

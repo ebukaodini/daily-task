@@ -1,0 +1,84 @@
+{
+  "title": "Tasks Schema",
+  "description": "describes the tasks",
+  "version": 0,
+  "primaryKey": "id",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "subtasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "board": {
+      "enum": [
+        "TASKS",
+        "ARCHIVE",
+        "BACKLOG"
+      ]
+    },
+    "status": {
+      "enum": [
+        "Pending",
+        "Doing",
+        "Paused",
+        "Cancelled",
+        "Done"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "order": {
+      "type": "number"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "event": {
+            "enum": [
+              "Pending",
+              "Doing",
+              "Paused",
+              "Cancelled",
+              "Done"
+            ]
+          }
+        },
+        "required": [
+          "timestamp"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id", "timestamp"
+  ]
+}
