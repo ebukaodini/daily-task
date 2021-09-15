@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useLocation } from 'react-router'
 import { uiActions } from './ui.actions'
 
 export const uiSlice = createSlice({
@@ -11,6 +10,6 @@ export const uiSlice = createSlice({
   reducers: uiActions
 })
 
-export const { toggleTheme, setPage } = uiSlice.actions
+export const { setTheme, setPage } = uiSlice.actions
 
 export default uiSlice.reducer

@@ -8,5 +8,14 @@ export default configureStore({
     ui: uiReducer,
     tasks: taskReducer,
     settings: settingsReducer,
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these field paths in all actions
+        ignoredActionPaths: ['meta.arg', 'payload'],
+        // Ignore these paths in the state
+        ignoredPaths: ['tasks', 'settings'],
+      },
+    }),
 })

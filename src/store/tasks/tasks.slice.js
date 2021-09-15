@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { tasksActions } from './tasks.actions'
+import { tasksActions, tasksExtraReducers } from './tasks.actions'
 
 export const taskSlice = createSlice({
   name: 'tasks',
-  initialState: [],
-  reducers: tasksActions
+  initialState: {
+    tasks: [],
+    tasksIsLoading: true
+  },
+  reducers: tasksActions,
+  extraReducers: tasksExtraReducers
 })
 
-// Action creators are generated for each case reducer function
-export const { addTask, getTasks, updateTask } = taskSlice.actions
+// export const { addTask, updateTask } = taskSlice.actions
 
-export default taskSlice.reducer
+export default taskSlice.reducer;
