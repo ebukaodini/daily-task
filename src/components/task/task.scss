@@ -47,12 +47,11 @@ div.__task {
     margin-bottom: 15px;
   }
 
-  // div.__task_action_btns {
-  // div.__task_actions {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  // }
+  div.__task_action_btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 768px) {

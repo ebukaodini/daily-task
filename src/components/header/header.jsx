@@ -8,11 +8,14 @@ import './header.scss';
 export default function Header() {
   const [date, setDate] = useState(formatDate());
   const ui = useSelector(state => state.ui)
+  const settings = useSelector(state => state.settings)
 
   useEffect(() => {
-    setInterval(() => {
+    let id = setInterval(() => {
       setDate(`${formatDate()}`);
     }, 10000);
+
+    return clearInterval(id);
   }, [setDate]);
 
   return (
@@ -20,7 +23,7 @@ export default function Header() {
 
       <div className='header__title'>
 
-        <h1 className='__title'>Daily Tasks</h1>
+        <h1 className='__title'>{settings.title ?? 'Daily Tasks'}</h1>
 
         <h4 className='__subtitle'>{date}</h4>
 
