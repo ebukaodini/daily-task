@@ -1,4 +1,4 @@
-import { addPouchPlugin, getRxStoragePouch, createRxDatabase, isRxDocument } from 'rxdb';
+import { addPouchPlugin, getRxStoragePouch, createRxDatabase, isRxDocument, removeRxDatabase } from 'rxdb';
 import tasksSchema from './task.schema.json';
 import settingsSchema from './settings.schema.json';
 import { NewSettings } from '../../utils/constants/new-settings';

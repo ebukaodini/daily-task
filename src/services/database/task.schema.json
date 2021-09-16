@@ -48,7 +48,28 @@
     "tags": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "colorCode": {
+            "enum": [
+              "7CC979",
+              "FFB05A",
+              "EF5849",
+              "C479DD",
+              "F5FCFF",
+              "AF7C2F",
+              "00C3DE",
+              "FF94D3",
+              "324662",
+              "B3BAC4",
+              "43E79C",
+              "F5D434"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
       }
     },
     "order": {
@@ -79,6 +100,7 @@
     }
   },
   "required": [
-    "id", "timestamp"
+    "id",
+    "timestamp"
   ]
 }
