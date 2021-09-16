@@ -13,6 +13,14 @@ export default function TasksPage() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const newTask = () => {
+    dispatch(addTask(NewTask(Board.tasks)));
+    setTimeout(() => {
+      let tsk = document.querySelectorAll('.__description_content')[tasks.length]
+      tsk.contentEditable = true; tsk.focus();
+    }, 500);
+  }
+
   // get the tasks for this page
   useEffect(() => {
     if (tasksStore.tasks.length > 0) {
@@ -32,7 +40,7 @@ export default function TasksPage() {
             <LoadingTasks />
             :
             tasks.length === 0 ?
-              <EmptySpace addHandler={() => dispatch(addTask(NewTask(Board.tasks)))} canAdd item='task' btnTitle='Add a task' /> :
+              <EmptySpace addHandler={newTask} canAdd item='task' btnTitle='Add a task' /> :
               <>
                 <div className='__tasks'>
                   {
@@ -41,7 +49,7 @@ export default function TasksPage() {
                     ))
                   }
                 </div>
-                <AddTask addHandler={() => dispatch(addTask(NewTask(Board.tasks)))} />
+                <AddTask addHandler={newTask} />
               </>
         }
       </section>

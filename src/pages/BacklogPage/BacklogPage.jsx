@@ -22,6 +22,14 @@ export default function BacklogPage() {
     setIsLoading(false);
   }, [tasksStore])
 
+  const newTask = () => {
+    dispatch(addTask(NewTask(Board.backlog)));
+    setTimeout(() => {
+      let tsk = document.querySelectorAll('.__description_content')[tasks.length]
+      tsk.contentEditable = true; tsk.focus();
+    }, 500);
+  }
+
   return (
     <Layout>
       <section>
@@ -33,7 +41,7 @@ export default function BacklogPage() {
             tasks.length === 0 ?
               <EmptySpace
                 canAdd
-                addHandler={() => dispatch(addTask(NewTask(Board.backlog)))}
+                addHandler={newTask}
                 item='task' btnTitle='Add a task' /> :
               <>
                 <div className='__tasks'>
@@ -43,7 +51,7 @@ export default function BacklogPage() {
                     ))
                   }
                 </div>
-                <AddTask addHandler={() => dispatch(addTask(NewTask(Board.backlog)))} />
+                <AddTask addHandler={newTask} />
               </>
         }
       </section>
