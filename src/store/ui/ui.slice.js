@@ -5,11 +5,12 @@ export const uiSlice = createSlice({
   name: 'ui',
   initialState: {
     theme: 'light-theme',
-    page: 'tasks'
+    page: 'tasks',
+    openManageTagsModal: false
   },
   reducers: uiActions
 })
 
-export const { setTheme, setPage } = uiSlice.actions
+export const { setTheme, setPage, toggleManageTagsModal } = uiSlice.actions
 
 export default uiSlice.reducer

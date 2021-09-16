@@ -36,7 +36,8 @@ export const getTasks = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
     }
-  })
+  }
+)
 
 export const addTask = createAsyncThunk(
   'tasks/addTask',
@@ -47,7 +48,8 @@ export const addTask = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
     }
-  })
+  }
+)
 
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
@@ -58,6 +60,19 @@ export const updateTask = createAsyncThunk(
         return task;
       });
       return updated.toJSON();
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+)
+
+export const deleteTask = createAsyncThunk(
+  'tasks/deleteTask',
+  async (task) => {
+    try {
+      let doc = await db.tasks.findOne(task.id).exec()
+      await doc.remove();
+      return task;
     } catch (error) {
       console.error(error.message);
     }
@@ -78,5 +93,11 @@ export const tasksExtraReducers = builder => {
       let index = state.tasks.findIndex(task => task.id === payload.id);
       if (index > -1)
         state.tasks[index] = payload;
+    })
+    .addCase(deleteTask.fulfilled, (state, { payload }) => {
+      let index = state.tasks.findIndex(task => task.id === payload.id);
+      if (index > -1)
+        state.tasks.splice(index, 1)
+      return state;
     })
 };
