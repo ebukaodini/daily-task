@@ -1,9 +1,10 @@
-@import '../../assets/style/base';
-@import '../../assets/style/mixins';
+@import "../../assets/style/base";
+@import "../../assets/style/palette";
+@import "../../assets/style/mixins";
 
 div.__description_content {
   @include themify() {
-    color: themed('main-fg');
+    color: themed("main-fg");
   }
 
   font-size: 18px;
@@ -13,5 +14,10 @@ div.__description_content {
 
   &.__editing {
     cursor: text;
+  }
+
+  &.__done,
+  &.__cancelled {
+    text-decoration: line-through 2px;
   }
 }

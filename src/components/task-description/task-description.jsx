@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../store/tasks/tasks.actions";
+import { TaskStatus } from "../../utils/constants/task-status";
 import './task-description.scss';
 
 export default function TaskDescription({ task }) {
@@ -10,7 +11,7 @@ export default function TaskDescription({ task }) {
 
   const updateDescription = async (e) => {
     setEditable(false);
-    let updatedTask = {...task, description: e.target.innerText}
+    let updatedTask = { ...task, description: e.target.innerText }
     dispatch(updateTask(updatedTask));
   }
 
@@ -31,7 +32,14 @@ export default function TaskDescription({ task }) {
   }
 
   return (
-    <div className={`__description_content ${editable && '__editing'}`} title='Double click to edit' suppressContentEditableWarning contentEditable={editable} onDoubleClick={() => setEditable(true)} onKeyDown={captureKey} onBlur={updateDescription} placeholder='Enter a task'>
+    <div
+      className={`__description_content ${editable && '__editing'} ${task.status === TaskStatus.done && '__done'} ${task.status === TaskStatus.cancelled && '__cancelled'} `} title='Double click to edit'
+      suppressContentEditableWarning
+      contentEditable={editable}
+      onDoubleClick={() => setEditable(true)}
+      onKeyDown={captureKey}
+      onBlur={updateDescription}
+      placeholder='Enter a task'>
       {task.description}
     </div>
   )

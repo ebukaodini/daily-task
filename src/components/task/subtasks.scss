@@ -1,5 +1,6 @@
 @import "../../assets/style/base";
 @import "../../assets/style/mixins";
+@import "../../assets/style/palette";
 
 button.__task_subtask_btn {
 
@@ -67,7 +68,7 @@ div.__subtask_list {
       width: 100%;
       
       &.__completed {
-        text-decoration: line-through;
+        text-decoration: line-through 2px;
       }
     }
   }

@@ -2,19 +2,24 @@ import { useState } from "react";
 import TaskDescription from "../task-description/task-description";
 import TaskTag from "../task-tag/task-tag";
 import { Check, Clock, CornerUpRight, MoreHorizontal, Pause, Trash2, X, CheckSquare, ChevronDown, ChevronUp, Plus, Square } from "react-feather";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, updateTask } from "../../store/tasks/tasks.actions";
 import { Board } from "../../utils/constants/board";
 import { TaskStatus } from "../../utils/constants/task-status";
 import './task.scss';
 import './task-menu.scss';
 import './subtasks.scss';
+import ManageTags from "../manage-tags/manage-tags";
+import { toggleManageTagsModal } from "../../store/ui/ui.slice";
 
 export default function Task({ task }) {
 
+  const dispatch = useDispatch();
+
+  const ui = useSelector(state => state.ui);
+
   // task menu
   const [menuOpen, setMenuMode] = useState(false);
-  const dispatch = useDispatch();
 
   let statusContent = () => {
     switch (task.status) {
@@ -55,7 +60,7 @@ export default function Task({ task }) {
       timestamp: new Date().toUTCString(),
       event: status,
     }
-    let updatedTask = { ...task, status: status, history: [...task.history, event] }
+    let updatedTask = { ...task, status, history: [...task.history, event] }
     dispatch(updateTask(updatedTask));
   }
 
@@ -65,7 +70,7 @@ export default function Task({ task }) {
   }
 
   const removeTask = async () => {
-    dispatch(deleteTask());
+    dispatch(deleteTask(task));
   }
 
   // task subtasks
@@ -125,10 +130,16 @@ export default function Task({ task }) {
             <TaskTag key={index} color={tag.colorCode} description={tag.description} />
           ))
         }
-        <button title='Manage Tags' className='__manage_tags_btn'>
+        <button title='Manage Tags'
+          onClick={() => { dispatch(toggleManageTagsModal()) }}
+          className='__manage_tags_btn'>
           <MoreHorizontal strokeWidth={3} />
         </button>
       </div>
+
+      {
+        ui.openManageTagsModal && <ManageTags task={task} />
+      }
 
       <div className='__task_description'>
         <TaskDescription task={task} />
@@ -165,60 +176,68 @@ export default function Task({ task }) {
         {
           menuOpen &&
           <div className='__task_menu_list'>
-            {/* disabled */}
-            <button
-              onClick={() => updateStatus(TaskStatus.pending)}
-              className={`__menu_status_btn ${task.status === 'Pending' && '__active'} `}>
-              <MoreHorizontal size={16} />
-              <span>Set to Pending</span>
-            </button>
-            <button
-              onClick={() => updateStatus(TaskStatus.doing)}
-              className={`__menu_status_btn ${task.status === 'Doing' && '__active'} `}>
-              <MoreHorizontal size={16} />
-              <span>Set to Doing</span>
-            </button>
-            <button
-              onClick={() => updateStatus(TaskStatus.paused)}
-              className={`__menu_status_btn ${task.status === 'Paused' && '__active'} `}>
-              <Pause size={16} />
-              <span>Set to Paused</span>
-            </button>
-            <button
-              onClick={() => updateStatus(TaskStatus.cancelled)}
-              className={`__menu_status_btn ${task.status === 'Cancelled' && '__active'} `}>
-              <X size={16} />
-              <span>Set to Cancelled</span>
-            </button>
-            <button
-              onClick={() => updateStatus(TaskStatus.done)}
-              className={`__menu_status_btn ${task.status === 'Done' && '__active'} `}>
-              <Check size={16} />
-              <span>Set to Done</span>
-            </button>
-            <hr />
-            <button
-              onClick={() => updateBoard(Board.tasks)}
-              className={`__menu_action_btn `}>
-              <CornerUpRight size={16} />
-              <span>Move to Tasks</span>
-            </button>
-            <button
-              onClick={() => updateBoard(Board.backlog)}
-              className={`__menu_action_btn `}>
-              <CornerUpRight size={16} />
-              <span>Move to Backlog</span>
-            </button>
-            <button
-              onClick={() => updateBoard(Board.archive)}
-              className={`__menu_action_btn `}>
-              <CornerUpRight size={16} />
-              <span>Move to Archived</span>
-            </button>
-            <button className={`__menu_action_btn `}>
+            {
+              task.board === Board.tasks &&
+              <>
+                <button
+                  onClick={() => updateStatus(TaskStatus.doing)}
+                  className={`__menu_status_btn ${task.status === 'Doing' && '__active'} `}>
+                  <MoreHorizontal size={16} />
+                  <span>Set to Doing</span>
+                </button>
+                <button
+                  onClick={() => updateStatus(TaskStatus.paused)}
+                  className={`__menu_status_btn ${task.status === 'Paused' && '__active'} `}>
+                  <Pause size={16} />
+                  <span>Set to Paused</span>
+                </button>
+
+                <button
+                  onClick={() => updateStatus(TaskStatus.cancelled)}
+                  className={`__menu_status_btn ${task.status === 'Cancelled' && '__active'} `}>
+                  <X size={16} />
+                  <span>Set to Cancelled</span>
+                </button>
+                <button
+                  onClick={() => updateStatus(TaskStatus.done)}
+                  className={`__menu_status_btn ${task.status === 'Done' && '__active'} `}>
+                  <Check size={16} />
+                  <span>Set to Done</span>
+                </button>
+                <hr />
+              </>
+            }
+            {
+              task.board !== Board.tasks &&
+              <button
+                onClick={() => updateBoard(Board.tasks)}
+                className={`__menu_action_btn `}>
+                <CornerUpRight size={16} />
+                <span>Move to Tasks</span>
+              </button>
+            }
+            {
+              task.board !== Board.backlog &&
+              <button
+                onClick={() => updateBoard(Board.backlog)}
+                className={`__menu_action_btn `}>
+                <CornerUpRight size={16} />
+                <span>Move to Backlog</span>
+              </button>
+            }
+            {
+              task.board !== Board.archive &&
+              <button
+                onClick={() => updateBoard(Board.archive)}
+                className={`__menu_action_btn `}>
+                <CornerUpRight size={16} />
+                <span>Move to Archived</span>
+              </button>
+            }
+            {/* <button className={`__menu_action_btn `}>
               <Clock size={16} />
               <span>Task History</span>
-            </button>
+            </button> */}
             <button
               onClick={() => removeTask()}
               className='__menu_action_btn __delete'>

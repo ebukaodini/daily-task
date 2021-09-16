@@ -1,0 +1,113 @@
+@import "../../assets/style/base";
+@import "../../assets/style/mixins";
+
+div.__manage_tags_modal {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 9999 !important;
+
+  @include themify() {
+    background-color: rgba(themed("grey-bg"), 0.5);
+  }
+
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+
+  div.__manage_tags_body {
+    background-color: white;
+    border-radius: $box-radius;
+    padding: 20px 20px;
+
+    height: max-content;
+    width: 90%;
+    margin: 0px 10px;
+    margin-top: 20vh;
+
+    div.__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button.__close_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+
+        @include themify() {
+          & {
+            color: themed("main-fg");
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: $become;
+          }
+          &:active,
+          &:hover,
+          &:focus-visible {
+            background-color: themed("grey-bg");
+            outline: unset;
+          }
+        }
+      }
+    }
+
+    @include themify() {
+      h2 {
+        color: themed("main-fg");
+      }
+      background-color: themed("card-bg");
+      color: themed("main-fg");
+    }
+
+    div.__tags {
+      padding: 10px 0px;
+    }
+
+    div.__selected_tags {
+      margin-bottom: 10px;
+      
+      div.__no_tags {
+        font-size: 14px;
+        margin: 3px 0px;
+        padding: 6px 0px;
+      }
+    }
+
+    // tag
+    div.__tag {
+      padding: 6px 14px;
+      margin: 3px 0px;
+      margin-right: 10px;
+      font-size: 14px;
+      border-radius: 15px; //$box-radius;
+      font-weight: bold;
+
+      @include tagColor();
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+
+      span.__tag_description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    div.__manage_tags_body {
+      width: 400px;
+    }
+  }
+}
