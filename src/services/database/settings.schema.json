@@ -37,9 +37,9 @@
           },
           "board": {
             "enum": [
-              "Tasks",
-              "Archive",
-              "Backlog"
+              "TASKS",
+              "ARCHIVE",
+              "BACKLOG"
             ]
           }
         }
@@ -56,7 +56,7 @@
               "FFB05A",
               "EF5849",
               "C479DD",
-              "F5FCFF",
+              "094385",
               "AF7C2F",
               "00C3DE",
               "FF94D3",
@@ -73,7 +73,8 @@
       }
     },
     "maximumTaskDoing": {
-      "type": "number"
+      "type": "number",
+      "minimum": 1
     }
   }
 }
