@@ -33,8 +33,8 @@ export default function ArchivePage() {
               <>
                 <div className='__tasks'>
                   {
-                    tasks.map((task, index) => (
-                      <Task task={task} key={index} />
+                    tasks.map(task => (
+                      <Task task={task} key={task.id} />
                     ))
                   }
                 </div>

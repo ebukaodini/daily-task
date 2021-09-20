@@ -1,0 +1,383 @@
+@import "../../assets/style/base";
+@import "../../assets/style/mixins";
+@import "../../assets/style/palette";
+
+div.__settings {
+  margin-top: 30px;
+  width: 100%;
+
+  @include themify() {
+    color: themed("main-fg");
+  }
+}
+
+div.__title_setting,
+div.__darkmode_setting,
+div.__automation_setting,
+div.__tags_setting {
+  margin-bottom: 30px;
+}
+
+div.__settings_group {
+  width: calc(100% - 40px);
+  padding: 20px;
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  @include themify() {
+    color: themed("main-fg");
+    background-color: themed("card-bg");
+    box-shadow: $box-shadow themed("grey-bg");
+  }
+}
+
+h3.__setting_title {
+  margin-bottom: 5px;
+}
+
+h4.__setting_subtitle {
+  margin-bottom: 10px;
+}
+
+small.__setting_description {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+  @include themify() {
+    color: themed("grey-fg");
+  }
+}
+
+div.__title_setting {
+  input.__title_input {
+    width: calc(100% - 32px);
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: $box-radius;
+    font-weight: 500;
+
+    @include themify() {
+      border: 1px solid themed("grey-bg");
+      color: themed("grey-fg") !important;
+      background-color: themed("card-bg");
+    }
+  }
+}
+
+div.__darkmode_setting {
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    input#__darkmode_checkbox {
+      display: none;
+    }
+
+    label,
+    div.__rectangle {
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    div.__rectangle {
+      margin-left: 10px;
+      border-radius: 10px;
+      height: 10px;
+      width: 25px;
+      position: relative;
+      background-color: transparent;
+
+      @include themify() {
+        border: 2px solid themed("main-fg");
+      }
+
+      div.__circle {
+        position: absolute;
+        top: -5px;
+        left: -3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $primary;
+        transition: all 0.5s ease;
+
+        &.__enabled {
+          left: 9px;
+        }
+      }
+    }
+  }
+}
+
+div.__enable_automation_setting {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  input#__enable_automation_checkbox {
+    display: none;
+  }
+
+  label,
+  div.__rectangle {
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  div.__rectangle {
+    margin-left: 10px;
+    border-radius: 10px;
+    height: 10px;
+    width: 25px;
+    position: relative;
+    background-color: transparent;
+
+    @include themify() {
+      border: 2px solid themed("main-fg");
+    }
+
+    div.__circle {
+      position: absolute;
+      top: -5px;
+      left: -3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $primary;
+      transition: all 0.5s ease;
+
+      &.__enabled {
+        left: 9px;
+      }
+    }
+  }
+}
+
+div.__automation_time_setting {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  input {
+    margin-left: 25px;
+    font-size: 14px;
+    padding: 7px 14px;
+    border-radius: $box-radius;
+    cursor: pointer;
+
+    @include themify() {
+      border: 1px solid themed("grey-bg");
+      color: themed("grey-fg");
+      background-color: themed("card-bg");
+    }
+  }
+}
+
+div.__automation_actions_setting {
+  div.__action_descriptors {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      width: 40%;
+    }
+  }
+
+  div.__actions {
+    margin-bottom: 20px;
+
+    div.__action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      select {
+        width: 40%;
+        font-size: 14px;
+        padding: 7px 14px;
+        border-radius: $box-radius;
+        cursor: pointer;
+
+        @include themify() {
+          border: 1px solid themed("grey-bg");
+          color: themed("grey-fg");
+          background-color: themed("card-bg");
+        }
+
+        option {
+          font-size: 14px;
+          padding: 7px 14px;
+          cursor: pointer;
+        }
+      }
+
+      button {
+        padding: 5px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        background-color: transparent;
+
+        @include themify() {
+          color: themed("grey-fg");
+        }
+
+        svg.__close {
+          display: none;
+        }
+
+        @include themify() {
+          &:hover {
+            background-color: themed("grey-bg");
+          }
+        }
+
+        &:hover {
+          svg.__arrow {
+            display: none;
+          }
+          svg.__close {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+
+  button.__add_action {
+    width: 100%;
+    font-size: 16px;
+    padding: 7px 14px;
+    border-radius: $box-radius;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 5px;
+    }
+
+    @include themify() {
+      border: 1px solid themed("grey-bg");
+      color: themed("main-fg");
+      background-color: themed("grey-bg");
+    }
+  }
+}
+
+div.__tags_setting {
+  div.__tag {
+    margin-bottom: 10px;
+    
+    div.__tag_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      padding: 7px 20px;
+      border-radius: $box-radius;
+
+      @include themify() {
+        border: 1px solid themed("grey-bg");
+      }
+
+      div.__tag_color {
+        width: 35px;
+        height: 12px;
+        margin-right: 20px;
+        border-radius: $box-radius;
+        font-weight: bold;
+        cursor: pointer;
+
+        @include tagColor();
+      }
+
+      div.__tag_description {
+        width: 100%;
+      }
+
+      button.__tag_remove {
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        background-color: transparent;
+
+        @include themify() {
+          color: themed("main-fg");
+
+          &:hover,
+          &:active {
+            background-color: themed("grey-bg");
+          }
+        }
+      }
+    }
+
+    div.__tag_color_list {
+      width: auto;
+      display: none;
+      flex-wrap: wrap;
+      border-radius: $box-radius;
+      overflow: hidden;
+      margin-top: 5px;
+      transition: display 1s ease-in-out;
+      
+      &.__selected {
+        display: flex;
+      }
+
+      @include themify() {
+        border: 1px solid themed('grey-bg');
+      }
+
+      div.__color {
+        width: 25%;
+        height: 30px;
+        cursor: pointer;
+        margin: auto;
+        @include tagColor();
+      }
+    }
+  }
+
+  button.__add_tag {
+    width: 100%;
+    font-size: 16px;
+    padding: 7px 14px;
+    border-radius: $box-radius;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 5px;
+    }
+
+    @include themify() {
+      border: 1px solid themed("grey-bg");
+      color: themed("main-fg");
+      background-color: themed("grey-bg");
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  div.__settings {
+    width: 400px;
+  }
+}
