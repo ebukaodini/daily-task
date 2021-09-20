@@ -11,11 +11,10 @@ export default function Header() {
   const settings = useSelector(state => state.settings)
 
   useEffect(() => {
-    let id = setInterval(() => {
+    setInterval(() => {
       setDate(`${formatDate()}`);
     }, 10000);
 
-    return clearInterval(id);
   }, [setDate]);
 
   return (

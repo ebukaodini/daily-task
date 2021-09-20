@@ -35,7 +35,6 @@ export default function ManageTags({ task }) {
           </button>
         </div>
         <div className='__tags'>
-
           <div className='__selected_tags'>
             {
               task.tags.length < 1 ?
@@ -52,16 +51,16 @@ export default function ManageTags({ task }) {
           <div className='__unselected_tags'>
             {
               settings.tags
-              .filter((stag) => {
-                return !task.tags.find((ttag) => ttag.description === stag.description && ttag.colorCode === stag.colorCode)
-              })
-              .map((tag, index) => (
-                <div key={index}
-                  onClick={() => addTaskTag(tag)}
-                  className={`__tag __${tag.colorCode}`}>
-                  <span title={`Select ${tag.description}`} className='__tag_description'>{tag.description}</span>
-                </div>
-              ))
+                .filter((stag) => {
+                  return !task.tags.find((ttag) => ttag.description === stag.description && ttag.colorCode === stag.colorCode)
+                })
+                .map((tag, index) => (
+                  <div key={index}
+                    onClick={() => addTaskTag(tag)}
+                    className={`__tag __${tag.colorCode}`}>
+                    <span title={`Select ${tag.description}`} className='__tag_description'>{tag.description}</span>
+                  </div>
+                ))
             }
           </div>
         </div>

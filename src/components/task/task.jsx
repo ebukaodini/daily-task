@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskDescription from "../task-description/task-description";
 import TaskTag from "../task-tag/task-tag";
-import { Check, Clock, CornerUpRight, MoreHorizontal, Pause, Trash2, X, CheckSquare, ChevronDown, ChevronUp, Plus, Square } from "react-feather";
+import { Check, CornerUpRight, MoreHorizontal, Pause, Trash2, X, CheckSquare, ChevronDown, ChevronUp, Plus, Square } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, updateTask } from "../../store/tasks/tasks.actions";
 import { Board } from "../../utils/constants/board";
@@ -15,8 +15,18 @@ import { toggleManageTagsModal } from "../../store/ui/ui.slice";
 export default function Task({ task }) {
 
   const dispatch = useDispatch();
-
   const ui = useSelector(state => state.ui);
+
+  const [manageTagsOpen, setManageTagsMode] = useState(false);
+  
+  useEffect(() => {
+    if (ui.openManageTagsModal === false)
+      setManageTagsMode(false)
+  }, [ui.openManageTagsModal])
+
+  const bringToLight = (e) => {
+    e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  }
 
   // task menu
   const [menuOpen, setMenuMode] = useState(false);
@@ -122,8 +132,9 @@ export default function Task({ task }) {
   }
 
   return (
-    <div className='__task'>
+    <div className='__task' onClick={e => bringToLight(e)}>
 
+      {/* Task Tags */}
       <div className='__task_tags'>
         {
           task.tags.map((tag, index) => (
@@ -131,20 +142,23 @@ export default function Task({ task }) {
           ))
         }
         <button title='Manage Tags'
-          onClick={() => { dispatch(toggleManageTagsModal()) }}
+          onClick={() => { setManageTagsMode(true); dispatch(toggleManageTagsModal()) }}
           className='__manage_tags_btn'>
           <MoreHorizontal strokeWidth={3} />
         </button>
       </div>
 
+      {/* Manage Tags Modal */}
       {
-        ui.openManageTagsModal && <ManageTags task={task} />
+        (ui.openManageTagsModal && manageTagsOpen) && <ManageTags task={task} />
       }
 
+      {/* Task Description */}
       <div className='__task_description'>
         <TaskDescription task={task} />
       </div>
 
+      {/* Task Menu & Subtasks Btns */}
       <div className='__task_action_btns'>
         <button className={`__task_subtask_btn ${task.subtasks.length > 0 ? '__filled' : '__empty'} ${subtasksOpen && '__open'}`} onClick={() => { setMenuMode(false); setSubtasksMode(!subtasksOpen) }}>
           {
