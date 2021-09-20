@@ -1,6 +1,5 @@
-body, button {
+body, button, input {
   margin: 0;
-  /* font-family: 'Patrick Hand', cursive; */
   font-family: 'Roboto', sans-serif;
 }
 
