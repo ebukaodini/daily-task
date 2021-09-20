@@ -1,3 +1,4 @@
+import { Board } from "./board";
 import { TaskStatus } from "./task-status";
 
 export const NewSettings = {
@@ -5,26 +6,30 @@ export const NewSettings = {
   title: 'Daily Tasks',
   darkMode: false,
   automateBoardReset: true,
-  boardResetTime: '10:45 PM',
+  boardResetTime: '10:45', // PM
   resetActions: [
     {
+      status: TaskStatus.pending,
+      board: Board.backlog
+    },
+    {
       status: TaskStatus.cancelled,
-      board: "Archive"
+      board: Board.archive
     },
     {
       status: TaskStatus.done,
-      board: "Archive"
+      board: Board.archive
     }
   ],
   tags: [
     {
       colorCode: '7CC979',
-      description: 'low priority'
+      description: 'Low Priority'
     },
     {
       colorCode: 'EF5849',
-      description: 'high priority'
+      description: 'High Priority'
     }
   ],
-  maximumTaskDoing: 3
+  maximumTaskDoing: 1
 };
