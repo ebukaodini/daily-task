@@ -11,18 +11,26 @@ export default function ManageTags({ task }) {
   const settings = useSelector(state => state.settings);
 
   const addTaskTag = (tag) => {
-    if (!task.tags.find((ttag) => ttag.description === tag.description && ttag.colorCode === tag.colorCode)) {
-      let updatedTask = { ...task, tags: [...task.tags, tag] }
+    if (!task.tags.find((ttag) => ttag.id === tag.id)) {
+      let updatedTask = { ...task, tags: [...task.tags, { id: tag.id }] }
       dispatch(updateTask(updatedTask));
     }
   }
 
   const removeTaskTag = (tag) => {
     let ttags = [...task.tags];
-    let index = task.tags.findIndex((ttag) => ttag.description === tag.description && ttag.colorCode === tag.colorCode);
+    let index = task.tags.findIndex((ttag) => ttag.id === tag.id);
     ttags.splice(index, 1);
     let updatedTask = { ...task, tags: ttags }
     dispatch(updateTask(updatedTask));
+  }
+
+  const cleanTags = (tags) => {
+    let cleanTags = [];
+    tags.forEach(tag => {
+      cleanTags.push(settings.tags.find((stag) => stag.id === tag.id))
+    });
+    return cleanTags.filter(Boolean);
   }
 
   return (
@@ -39,7 +47,9 @@ export default function ManageTags({ task }) {
             {
               task.tags.length < 1 ?
                 <div className='__no_tags'>No tags</div> :
-                task.tags.map((tag, index) => (
+                cleanTags(task.tags)
+                // task.tags
+                .map((tag, index) => (
                   <div key={index}
                     onClick={() => removeTaskTag(tag)}
                     className={`__tag __${tag.colorCode}`}>
@@ -52,7 +62,7 @@ export default function ManageTags({ task }) {
             {
               settings.tags
                 .filter((stag) => {
-                  return !task.tags.find((ttag) => ttag.description === stag.description && ttag.colorCode === stag.colorCode)
+                  return !task.tags.find((ttag) => ttag.id === stag.id)
                 })
                 .map((tag, index) => (
                   <div key={index}

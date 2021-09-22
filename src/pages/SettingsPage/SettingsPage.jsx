@@ -63,6 +63,7 @@ export default function SettingsPage() {
   const addTag = () => {
     let tags = [...settings.tags];
     tags.push({
+      id: new Date().toISOString(),
       colorCode: "B3BAC4",
       description: ""
     });
@@ -120,7 +121,9 @@ export default function SettingsPage() {
     let hour = time.toString().substr(0, 2);
     let min = time.substr(3, 2);
     let mrd = time.substr(6, 2);
-    setBRTime({ hour, min, mrd })
+    setBRTime({ hour, min, mrd });
+
+    return;
   }, [settings.boardResetTime])
 
   const [selectedTag, setSelectedTag] = useState();
@@ -338,6 +341,7 @@ export default function SettingsPage() {
                         className='__tag_description'
                         onBlur={e =>
                           updateTagDescription(index, {
+                            id: tag.id,
                             colorCode: tag.colorCode,
                             description: e.target.innerText
                           })
@@ -358,6 +362,7 @@ export default function SettingsPage() {
                         <div key={nanoId()}
                           onClick={() => {
                             updateTagColorCode(index, {
+                              id: tag.id,
                               colorCode: color,
                               description: tag.description
                             })

@@ -16,6 +16,7 @@ export default function Task({ task }) {
 
   const dispatch = useDispatch();
   const ui = useSelector(state => state.ui);
+  const settings = useSelector(state => state.settings);
 
   const [manageTagsOpen, setManageTagsMode] = useState(false);
   
@@ -131,13 +132,23 @@ export default function Task({ task }) {
     }
   }
 
+  const cleanTags = (tags) => {
+    let cleanTags = [];
+    tags.forEach(tag => {
+      cleanTags.push(settings.tags.find((stag) => stag.id === tag.id))
+    });
+    console.log('tags', tags, 'clean tags', cleanTags);
+    return cleanTags.filter(Boolean);
+  }
+
   return (
     <div className='__task' onClick={e => bringToLight(e)}>
 
       {/* Task Tags */}
       <div className='__task_tags'>
         {
-          task.tags.map((tag, index) => (
+          cleanTags(task.tags)
+          .map((tag, index) => (
             <TaskTag key={index} color={tag.colorCode} description={tag.description} />
           ))
         }

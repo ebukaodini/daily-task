@@ -50,6 +50,9 @@
       "items": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "colorCode": {
             "enum": [
               "7CC979",
