@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Plus, X } from "react-feather";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -91,6 +91,38 @@ export default function SettingsPage() {
     dispatch(updateSettings(updatedSettings))
   }
 
+  const miniTimeType = {
+    hour: 'Hour', min: 'Minutes', mrd: 'Meridian'
+  }
+
+  const formatTime = (miniTime, type) => {
+    let time = settings.boardResetTime;
+    switch (type) {
+      case miniTimeType.hour:
+        time = time.toString().replace(/^\d\d:/, miniTime + ':');
+        break;
+      case miniTimeType.min:
+        time = time.toString().replace(/:\d\d\s/, ':' + miniTime + ' ');
+        break;
+      case miniTimeType.mrd:
+        time = time.toString().replace(/\s(AM|PM)$/, ' ' + miniTime);
+        break;
+      default:
+        break;
+    }
+    updateAutomationTime(time);
+  }
+
+  const [bRTime, setBRTime] = useState({ hour: '01', min: '00', mrd: 'AM' });
+
+  useEffect(() => {
+    let time = settings.boardResetTime ?? "";
+    let hour = time.toString().substr(0, 2);
+    let min = time.substr(3, 2);
+    let mrd = time.substr(6, 2);
+    setBRTime({ hour, min, mrd })
+  }, [settings.boardResetTime])
+
   const [selectedTag, setSelectedTag] = useState();
 
   return (
@@ -159,21 +191,54 @@ export default function SettingsPage() {
 
                 <label htmlFor='__automation_time'>End of Day</label>
 
-                <input
-                  type="time"
-                  min="00:00"
-                  max="12:00"
-                  id='__automation_time'
-                  defaultValue={settings.boardResetTime}
-                  disabled={!settings.automateBoardReset}
-                  onChange={e => updateAutomationTime(e.target.value)}
-                />
+                <div className='__automation_time'>
+                  <select
+                    value={bRTime.hour}
+                    onChange={(e) => formatTime(e.target.value, miniTimeType.hour)}
+                    id='__automation_time'
+                  >
+                    {
+                      ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'].map((hour, index) => (
+                        <option key={index} value={hour}>{hour}</option>
+                      ))
+                    }
+                  </select>
+                  <span>:</span>
+                  <select
+                    value={bRTime.min}
+                    onChange={(e) => formatTime(e.target.value, miniTimeType.min)}
+                  >
+                    {
+                      [
+                        '00', '01', '02', '03', '04', '05', '06', '07', '08', '09',
+                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+                        '20', '21', '22', '23', '24', '25', '26', '27', '28', '29',
+                        '30', '31', '32', '33', '34', '35', '36', '37', '38', '39',
+                        '40', '41', '42', '43', '44', '45', '46', '47', '48', '49',
+                        '50', '51', '52', '53', '54', '55', '56', '57', '58', '59'
+                      ].map((min, index) => (
+                        <option key={index} value={min}>{min}</option>
+                      ))
+                    }
+                  </select>
+                  <select
+                    value={bRTime.mrd}
+                    onChange={(e) => formatTime(e.target.value, miniTimeType.mrd)}
+                  >
+                    {
+                      ['AM', 'PM'].map((mrd, index) => (
+                        <option key={index} value={mrd}>{mrd}</option>
+                      ))
+                    }
+                  </select>
+                </div>
+
               </div>
 
               <div className='__automation_actions_setting'>
 
                 <div className='__action_descriptors'>
-                  <h4 className='__setting_subtitle'>From</h4>
+                  <h4 className='__setting_subtitle'>Move</h4>
                   <h4 className='__setting_subtitle'>To</h4>
                 </div>
 
@@ -291,13 +356,13 @@ export default function SettingsPage() {
 
                       {Object.values(TagColors).map(color => (
                         <div key={nanoId()}
-                        onClick={() => {
-                          updateTagColorCode(index, {
-                            colorCode: color,
-                            description: tag.description
-                          })
-                        }}
-                        className={`__color __${color}`}></div>
+                          onClick={() => {
+                            updateTagColorCode(index, {
+                              colorCode: color,
+                              description: tag.description
+                            })
+                          }}
+                          className={`__color __${color}`}></div>
                       ))}
 
                     </div>

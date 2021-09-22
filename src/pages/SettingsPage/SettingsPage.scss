@@ -165,17 +165,41 @@ div.__automation_time_setting {
     cursor: pointer;
   }
 
-  input {
+  div.__automation_time {
     margin-left: 25px;
     font-size: 14px;
     padding: 7px 14px;
     border-radius: $box-radius;
-    cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
     @include themify() {
       border: 1px solid themed("grey-bg");
       color: themed("grey-fg");
       background-color: themed("card-bg");
+    }
+    
+    select {
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0px 5px;
+      border: none;
+      
+      // hide the dropdown arrow button
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      text-overflow: '';
+      // for I.E
+      &::-ms-expand {
+        display: none !important;
+      }
+      
+      @include themify() {
+        color: themed("grey-fg");
+        background-color: themed("card-bg");
+      }
     }
   }
 }
@@ -280,7 +304,7 @@ div.__automation_actions_setting {
 div.__tags_setting {
   div.__tag {
     margin-bottom: 10px;
-    
+
     div.__tag_content {
       display: flex;
       align-items: center;
@@ -336,13 +360,13 @@ div.__tags_setting {
       overflow: hidden;
       margin-top: 5px;
       transition: display 1s ease-in-out;
-      
+
       &.__selected {
         display: flex;
       }
 
       @include themify() {
-        border: 1px solid themed('grey-bg');
+        border: 1px solid themed("grey-bg");
       }
 
       div.__color {
