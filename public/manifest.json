@@ -1,6 +1,7 @@
 {
   "short_name": "Daily Tasks",
   "name": "Daily Tasks",
+  "description": "A basic todo application that follows the kanban style of task management.",
   "icons": [
     {
       "src": "favicon.ico",
