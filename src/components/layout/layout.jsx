@@ -16,6 +16,8 @@ export default function Layout(props) {
 
   useEffect(() => {
     dispatch(setPage(location.pathname.toString().substr(1)));
+
+    return;
   }, [location, dispatch])
 
   return (

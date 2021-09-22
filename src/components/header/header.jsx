@@ -15,6 +15,7 @@ export default function Header() {
       setDate(`${formatDate()}`);
     }, 10000);
 
+    return;
   }, [setDate]);
 
   return (

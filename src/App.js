@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTasks } from './store/tasks/tasks.actions';
 import { Themes } from './utils/constants/themes';
 import { setTheme } from './store/ui/ui.slice';
+import { ResetTasksBoard } from './services/task-assistant/reset-tasks-board';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
       dispatch(getSettings())
       dispatch(getTasks());
     }
-    
+
     // wait one second to allow db load
     // Warning!!! Do not remove this event from the hook.
     setTimeout(() => {
@@ -30,11 +31,13 @@ function App() {
     }, 1000);
 
   }, [dispatch])
-  
+
   // set theme
   useEffect(() => {
     dispatch(setTheme(settings.darkMode === true ? Themes.dark : Themes.light));
   }, [dispatch, settings.darkMode])
+
+  ResetTasksBoard();
 
   return (
     <Router>

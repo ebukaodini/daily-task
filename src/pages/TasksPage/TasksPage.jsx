@@ -29,6 +29,8 @@ export default function TasksPage() {
       }))
     }
     setIsLoading(false);
+
+    return;
   }, [tasksStore])
 
   return (

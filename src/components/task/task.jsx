@@ -19,10 +19,12 @@ export default function Task({ task }) {
   const settings = useSelector(state => state.settings);
 
   const [manageTagsOpen, setManageTagsMode] = useState(false);
-  
+
   useEffect(() => {
     if (ui.openManageTagsModal === false)
       setManageTagsMode(false)
+
+    return;
   }, [ui.openManageTagsModal])
 
   const bringToLight = (e) => {
@@ -148,9 +150,9 @@ export default function Task({ task }) {
       <div className='__task_tags'>
         {
           cleanTags(task.tags)
-          .map((tag, index) => (
-            <TaskTag key={index} color={tag.colorCode} description={tag.description} />
-          ))
+            .map((tag, index) => (
+              <TaskTag key={index} color={tag.colorCode} description={tag.description} />
+            ))
         }
         <button title='Manage Tags'
           onClick={() => { setManageTagsMode(true); dispatch(toggleManageTagsModal()) }}

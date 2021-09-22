@@ -20,6 +20,8 @@ export default function BacklogPage() {
       }))
     }
     setIsLoading(false);
+
+    return;
   }, [tasksStore])
 
   const newTask = () => {

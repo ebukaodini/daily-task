@@ -17,6 +17,8 @@ export default function ArchivePage() {
       }))
     }
     setIsLoading(false);
+
+    return;
   }, [tasksStore])
 
   return (
