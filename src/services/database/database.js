@@ -12,8 +12,8 @@ const _create = async () => {
     // add the pouchdb indexeddb adapter
     addPouchPlugin(require('pouchdb-adapter-idb'));
 
-    console.log('DatabaseService: removing old database...');
-    await removeRxDatabase('dailytasks_db', getRxStoragePouch('idb'),);
+    // console.log('DatabaseService: removing old database...');
+    // await removeRxDatabase('dailytasks_db', getRxStoragePouch('idb'),);
 
     // console.log('DatabaseService: creating database..');
     const db = await createRxDatabase({
