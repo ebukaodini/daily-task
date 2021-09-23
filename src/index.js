@@ -6,7 +6,6 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import store from './store/rootReducer'
 import { Provider } from 'react-redux'
-import * as A2HS from './services/a2hs';
 
 ReactDOM.render(
   <React.StrictMode>
