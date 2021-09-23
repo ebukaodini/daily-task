@@ -7,7 +7,7 @@ import './WelcomePage.scss';
 export default function WelcomePage() {
   const ui = useSelector(state => state.ui);
 
-  const [hasEvent, setHasEvent] = useState(false);
+  // const [hasEvent, setHasEvent] = useState(false);
   let deferredPrompt;
 
   useEffect(() => {
@@ -16,10 +16,10 @@ export default function WelcomePage() {
       console.log("Before Install Prompt", e);
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
-      if (!hasEvent) {
+      // if (!hasEvent) {
         deferredPrompt = e;
-        setHasEvent(true);
-      }
+        // setHasEvent(true);
+      // }
     }
 
     window.addEventListener('beforeinstallprompt', setA2HSEvent);
