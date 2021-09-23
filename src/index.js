@@ -7,12 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/rootReducer'
 import { Provider } from 'react-redux'
 
-let deferredPrompt;
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App deferredPrompt={deferredPrompt} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
@@ -29,47 +27,31 @@ serviceWorkerRegistration.register();
 reportWebVitals();
 
 // A2HS
+let deferredPrompt;
+const addBtn = document.querySelector('.__A2HS');
+addBtn.style.display = 'none';
 
-// let deferredPrompt;
-
-const setA2HSEvent = (e) => {
-  console.log("Before Install Prompt", e);
+window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-}
+  // Update UI to notify the user they can add to home screen
+  addBtn.style.display = 'flex';
 
-// window.addEventListener('beforeinstallprompt', setA2HSEvent);
-
-// // A2HS
-// let deferredPrompt;
-// // const addBtn = document.querySelector('.add-button');
-// const addBtn = document.querySelector('.__A2HS');
-// // addBtn.style.display = 'none';
-
-// window.addEventListener('beforeinstallprompt', (e) => {
-//   // Prevent Chrome 67 and earlier from automatically showing the prompt
-//   e.preventDefault();
-//   // Stash the event so it can be triggered later.
-//   deferredPrompt = e;
-//   // Update UI to notify the user they can add to home screen
-//   // addBtn.style.display = 'block';
-
-//   addBtn.addEventListener('click', (e) => {
-//     alert('hi')
-//     // hide our user interface that shows our A2HS button
-//     addBtn.style.display = 'none';
-//     // Show the prompt
-//     deferredPrompt.prompt();
-//     // Wait for the user to respond to the prompt
-//     deferredPrompt.userChoice.then((choiceResult) => {
-//         if (choiceResult.outcome === 'accepted') {
-//           console.log('User accepted the A2HS prompt');
-//         } else {
-//           console.log('User dismissed the A2HS prompt');
-//         }
-//         deferredPrompt = null;
-//       });
-//   });
-// });
+  addBtn.addEventListener('click', (e) => {
+    // hide our user interface that shows our A2HS button
+    addBtn.style.display = 'none';
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+  });
+});

@@ -3,40 +3,10 @@ import { Download } from 'react-feather';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './WelcomePage.scss';
+import logo from '../../assets/imgs/logo.svg';
 
-export default function WelcomePage({deferredPrompt}) {
+export default function WelcomePage({ deferredPrompt }) {
   const ui = useSelector(state => state.ui);
-
-  // const [hasEvent, setHasEvent] = useState(false);
-  // let deferredPrompt;
-
-  // useEffect(() => {
-  //   // A2HS
-  //   const setA2HSEvent = (e) => {
-  //     console.log("Before Install Prompt", e);
-  //     // Prevent Chrome 67 and earlier from automatically showing the prompt
-  //     e.preventDefault();
-  //     // if (!hasEvent) {
-  //       deferredPrompt = e;
-  //       // setHasEvent(true);
-  //     // }
-  //   }
-
-  //   window.addEventListener('beforeinstallprompt', setA2HSEvent);
-  //   return () => {
-  //     window.removeEventListener('beforeinstallprompt', setA2HSEvent);
-  //   }
-  // }, []);
-
-  // const setA2HSEvent = (e) => {
-  //   console.log("Before Install Prompt", e);
-  //   // Prevent Chrome 67 and earlier from automatically showing the prompt
-  //   e.preventDefault();
-  //   // Stash the event so it can be triggered later.
-  //   deferredPrompt = e;
-  // }
-
-  // window.addEventListener('beforeinstallprompt', setA2HSEvent);
 
   const a2HS = (e) => {
     e.preventDefault();
@@ -57,17 +27,12 @@ export default function WelcomePage({deferredPrompt}) {
     <section className={`${ui.theme}`}>
       <div className='__welcome'>
         <div>
-          <h1 className='hand-written'>Daily Tasks</h1>
-          <Link className='__continue_link' to='/tasks' >Continue</Link>
+          <img src={logo} alt="Daily Tasks Logo"width={200} />
         </div>
 
         <div>
-          <button
-            onClick={a2HS}
-            className='__A2HS'>
-            <Download size={18} />
-            <span>Add to Home Screen</span>
-          </button>
+          <h1 className='hand-written'>Daily Tasks</h1>
+          <Link className='__continue_link' to='/tasks' >Continue</Link>
         </div>
       </div>
     </section>

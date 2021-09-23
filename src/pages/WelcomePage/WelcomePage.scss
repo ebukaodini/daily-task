@@ -6,7 +6,7 @@ div.__welcome {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 
   @include themify() {
@@ -48,36 +48,40 @@ div.__welcome {
   }
 }
 
-.__A2HS {
-  text-decoration: none;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: large;
-
-  // background-color: transparent;
-  transition: $become;
-  
-  &:focus-visible {
-    outline: none;
-  }
-  
-  @include themify() {
-    color: themed("main-fg");
-    background-color: themed("grey-bg");
-
-    &:hover,
-    &:active {
-      background-color: themed("grey-bg");
-    }
-  }
-
-  svg {
-    margin-right: 5px;
-  }
+img {
+  margin-bottom: 50px;
 }
+
+// .__A2HS {
+//   text-decoration: none;
+//   padding: 8px 16px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: large;
+
+//   // background-color: transparent;
+//   transition: $become;
+  
+//   &:focus-visible {
+//     outline: none;
+//   }
+  
+//   @include themify() {
+//     color: themed("main-fg");
+//     background-color: themed("grey-bg");
+
+//     &:hover,
+//     &:active {
+//       background-color: themed("grey-bg");
+//     }
+//   }
+
+//   svg {
+//     margin-right: 5px;
+//   }
+// }
