@@ -10,23 +10,35 @@ export default function WelcomePage() {
   // const [hasEvent, setHasEvent] = useState(false);
   let deferredPrompt;
 
-  useEffect(() => {
-    // A2HS
-    const setA2HSEvent = (e) => {
-      console.log("Before Install Prompt", e);
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // if (!hasEvent) {
-        deferredPrompt = e;
-        // setHasEvent(true);
-      // }
-    }
+  // useEffect(() => {
+  //   // A2HS
+  //   const setA2HSEvent = (e) => {
+  //     console.log("Before Install Prompt", e);
+  //     // Prevent Chrome 67 and earlier from automatically showing the prompt
+  //     e.preventDefault();
+  //     // if (!hasEvent) {
+  //       deferredPrompt = e;
+  //       // setHasEvent(true);
+  //     // }
+  //   }
 
-    window.addEventListener('beforeinstallprompt', setA2HSEvent);
-    return () => {
-      window.removeEventListener('beforeinstallprompt', setA2HSEvent);
-    }
-  }, []);
+  //   window.addEventListener('beforeinstallprompt', setA2HSEvent);
+  //   return () => {
+  //     window.removeEventListener('beforeinstallprompt', setA2HSEvent);
+  //   }
+  // }, []);
+
+  const setA2HSEvent = (e) => {
+    console.log("Before Install Prompt", e);
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // if (!hasEvent) {
+      deferredPrompt = e;
+      // setHasEvent(true);
+    // }
+  }
+
+  window.addEventListener('beforeinstallprompt', setA2HSEvent);
 
   const a2HS = (e) => {
     e.preventDefault();
