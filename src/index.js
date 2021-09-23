@@ -6,7 +6,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import store from './store/rootReducer'
 import { Provider } from 'react-redux'
-// import * as A2HS from './services/a2hs';
+import * as A2HS from './services/a2hs';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,7 +39,7 @@ reportWebVitals();
 //   // Stash the event so it can be triggered later.
 //   deferredPrompt = e;
 //   // Update UI to notify the user they can add to home screen
-//   addBtn.style.display = 'block';
+//   // addBtn.style.display = 'block';
 
 //   addBtn.addEventListener('click', (e) => {
 //     alert('hi')
