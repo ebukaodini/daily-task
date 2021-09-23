@@ -12,7 +12,7 @@ import { Themes } from './utils/constants/themes';
 import { setTheme } from './store/ui/ui.slice';
 import { ResetTasksBoard } from './services/task-assistant/reset-tasks-board';
 
-function App() {
+function App({deferredPrompt}) {
 
   const dispatch = useDispatch();
   const settings = useSelector(state => state.settings);
@@ -42,7 +42,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={WelcomePage} />
+        <Route exact path='/' component={WelcomePage} deferredPrompt={deferredPrompt} />
         <Route exact path='/tasks' component={TasksPage} />
         <Route exact path='/backlog' component={BacklogPage} />
         <Route exact path='/archive' component={ArchivePage} />

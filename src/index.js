@@ -7,10 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/rootReducer'
 import { Provider } from 'react-redux'
 
+let deferredPrompt;
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App deferredPrompt={deferredPrompt} />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
@@ -25,6 +27,20 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// A2HS
+
+// let deferredPrompt;
+
+const setA2HSEvent = (e) => {
+  console.log("Before Install Prompt", e);
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+}
+
+window.addEventListener('beforeinstallprompt', setA2HSEvent);
 
 // // A2HS
 // let deferredPrompt;

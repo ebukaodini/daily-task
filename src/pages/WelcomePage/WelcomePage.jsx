@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './WelcomePage.scss';
 
-export default function WelcomePage() {
+export default function WelcomePage({deferredPrompt}) {
   const ui = useSelector(state => state.ui);
 
   // const [hasEvent, setHasEvent] = useState(false);
-  let deferredPrompt;
+  // let deferredPrompt;
 
   // useEffect(() => {
   //   // A2HS
@@ -28,17 +28,15 @@ export default function WelcomePage() {
   //   }
   // }, []);
 
-  const setA2HSEvent = (e) => {
-    console.log("Before Install Prompt", e);
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // if (!hasEvent) {
-      deferredPrompt = e;
-      // setHasEvent(true);
-    // }
-  }
+  // const setA2HSEvent = (e) => {
+  //   console.log("Before Install Prompt", e);
+  //   // Prevent Chrome 67 and earlier from automatically showing the prompt
+  //   e.preventDefault();
+  //   // Stash the event so it can be triggered later.
+  //   deferredPrompt = e;
+  // }
 
-  window.addEventListener('beforeinstallprompt', setA2HSEvent);
+  // window.addEventListener('beforeinstallprompt', setA2HSEvent);
 
   const a2HS = (e) => {
     e.preventDefault();
