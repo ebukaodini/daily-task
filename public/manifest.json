@@ -4,7 +4,7 @@
   "description": "A basic todo application that follows the kanban style of task management.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
