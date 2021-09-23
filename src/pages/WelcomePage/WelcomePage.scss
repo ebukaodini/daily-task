@@ -6,7 +6,7 @@ div.__welcome {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   @include themify() {
@@ -24,14 +24,15 @@ div.__welcome {
     padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
-
+    
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: large;
 
     background-color: transparent;
     transition: $become;
-    
+
     &:focus-visible {
       outline: none;
     }
@@ -47,8 +48,36 @@ div.__welcome {
   }
 }
 
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
+.__A2HS {
+  text-decoration: none;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+
+  // background-color: transparent;
+  transition: $become;
+  
+  &:focus-visible {
+    outline: none;
+  }
+  
+  @include themify() {
+    color: themed("main-fg");
+    background-color: themed("grey-bg");
+
+    &:hover,
+    &:active {
+      background-color: themed("grey-bg");
+    }
+  }
+
+  svg {
+    margin-right: 5px;
+  }
 }

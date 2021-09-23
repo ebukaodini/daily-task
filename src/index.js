@@ -27,12 +27,11 @@ serviceWorkerRegistration.register();
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-// A2HS();
+// A2HS
 let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
-// addBtn.style.display = 'none';x  
-
-// console.log(addBtn)
+// const addBtn = document.querySelector('.add-button');
+const addBtn = document.querySelector('.__A2HS');
+// addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -43,6 +42,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   addBtn.style.display = 'block';
 
   addBtn.addEventListener('click', (e) => {
+    alert('hi')
     // hide our user interface that shows our A2HS button
     addBtn.style.display = 'none';
     // Show the prompt
