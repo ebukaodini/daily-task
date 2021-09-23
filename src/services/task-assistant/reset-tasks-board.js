@@ -24,7 +24,7 @@ export const ResetTasksBoard = () => {
 
         if (settings.automateBoardReset === true && formattedTime === time) {
 
-          console.log('resetting task board')
+          // console.log('resetting task board')
 
           // loop through tasks in the task board
           tasks.tasks
