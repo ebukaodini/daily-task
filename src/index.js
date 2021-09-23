@@ -40,7 +40,7 @@ const setA2HSEvent = (e) => {
   deferredPrompt = e;
 }
 
-window.addEventListener('beforeinstallprompt', setA2HSEvent);
+// window.addEventListener('beforeinstallprompt', setA2HSEvent);
 
 // // A2HS
 // let deferredPrompt;
