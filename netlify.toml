@@ -15,9 +15,6 @@
   # Default build command.
   command = "CI='' npm run build"
 
-[[plugins]]
-  # Installs the Lighthouse Build Plugin for all deploy contexts
-
 [context.production]
 [context.production.environment]
   # REACT ENV VARIABLES
