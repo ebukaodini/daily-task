@@ -75,6 +75,7 @@ export default function Task({ task }) {
     }
     let updatedTask = { ...task, status, history: [...task.history, event] }
     dispatch(updateTask(updatedTask));
+    setMenuMode(!menuOpen);
   }
 
   const updateBoard = async (board) => {
